@@ -106,7 +106,7 @@ body {
   }
 }
 
-@media only screen and (max-height: 500px) {
+@media only screen and (max-height: 600px) {
   .gameboard {
       min-width: 320px;
       min-height: 320px;
