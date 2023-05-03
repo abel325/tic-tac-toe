@@ -39,10 +39,10 @@ body {
 
 .gameboard > .gameboard-square {
   border: 1px solid black;
-}
-
-.gameboard-square:hover {
-  background-color: rgb(160, 160, 160);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
 }
 
 .side-container {
@@ -57,13 +57,9 @@ body {
   align-items: center;
 }
 
-.side-container > * {
-  border: 1px black solid;
-}
-
 .side-container > .score {
   display: flex;
-  flex-grow: 1;
+  width: 25%;
   justify-content: center;
 }
 
@@ -73,7 +69,7 @@ body {
 }
 
 .score > .blue-score {
-  color: aqua;
+  color: blue;
 }
 
 .score > .red-score {
@@ -83,14 +79,14 @@ body {
 .side-container > .announcements {
   display: flex;
   justify-content: center;
-  flex-grow: 2;
+  width: 50%;
 }
 
 .side-container > .reset-btn-ctr   {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+  width: 25%;
   height: 50px;
 }
 
@@ -104,11 +100,19 @@ body {
       min-width: 320px;
       min-height: 320px;
   }
+
+  .gameboard > .gameboard-square {
+    font-size: 3rem;
+  }
 }
 
 @media only screen and (max-height: 600px) {
   .gameboard {
       min-width: 320px;
       min-height: 320px;
+  }
+
+  .gameboard > .gameboard-square {
+    font-size: 3rem;
   }
 }
