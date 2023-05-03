@@ -41,27 +41,11 @@ const GameBoard = (function() {
     }
   }
 
-
-  const isWinner = (mark) => {
-    if ( ((mark === board[0][0]) && (board[0][0] === board[1][1] && board[1][1] === board[2][2])) || 
-         ((mark === board[0][2]) && (board[0][2] === board[1][1] && board[1][1] === board[2][0])) ||
-         ((mark === board[0][0]) && (board[0][0] === board[0][1] && board[0][1] === board[0][2])) ||
-         ((mark === board[1][0]) && (board[1][0] === board[1][1] && board[1][1] === board[1][2])) ||
-         ((mark === board[2][0]) && (board[2][0] === board[2][1] && board[2][1] === board[2][2])) ||
-         ((mark === board[0][0]) && (board[0][0] === board[1][0] && board[1][0] === board[2][0])) ||
-         ((mark === board[0][1]) && (board[0][1] === board[1][1] && board[1][1] === board[2][1])) ||
-         ((mark === board[0][2]) && (board[0][2] === board[1][2] && board[1][2] === board[2][2]))
-         ) { return true };
-
-    return false;
-  }
-
   return {
-    getBoard, // not used
+    getBoard, 
     markCell,
     isCellOccupied,
     isBoardFull,
-    isWinner,
     clearBoard
   }
 })();
@@ -83,26 +67,26 @@ const GameController = (function() {
     return playerTurn;
   }
 
-  // const isWinner = (mark) => {
-  //   const board = GameBoard.getBoard();
-  //   if ( ((mark === board[0][0]) && (board[0][0] === board[1][1] && board[1][1] === board[2][2])) || 
-  //        ((mark === board[0][2]) && (board[0][2] === board[1][1] && board[1][1] === board[2][0])) ||
-  //        ((mark === board[0][0]) && (board[0][0] === board[0][1] && board[0][1] === board[0][2])) ||
-  //        ((mark === board[1][0]) && (board[1][0] === board[1][1] && board[1][1] === board[1][2])) ||
-  //        ((mark === board[2][0]) && (board[2][0] === board[2][1] && board[2][1] === board[2][2])) ||
-  //        ((mark === board[0][0]) && (board[0][0] === board[1][0] && board[1][0] === board[2][0])) ||
-  //        ((mark === board[0][1]) && (board[0][1] === board[1][1] && board[1][1] === board[2][1])) ||
-  //        ((mark === board[0][2]) && (board[0][2] === board[1][2] && board[1][2] === board[2][2]))
-  //        ) { return true };
+  const isWinner = (mark) => {
+    const board = GameBoard.getBoard();
+    if ( ((mark === board[0][0]) && (board[0][0] === board[1][1] && board[1][1] === board[2][2])) || 
+         ((mark === board[0][2]) && (board[0][2] === board[1][1] && board[1][1] === board[2][0])) ||
+         ((mark === board[0][0]) && (board[0][0] === board[0][1] && board[0][1] === board[0][2])) ||
+         ((mark === board[1][0]) && (board[1][0] === board[1][1] && board[1][1] === board[1][2])) ||
+         ((mark === board[2][0]) && (board[2][0] === board[2][1] && board[2][1] === board[2][2])) ||
+         ((mark === board[0][0]) && (board[0][0] === board[1][0] && board[1][0] === board[2][0])) ||
+         ((mark === board[0][1]) && (board[0][1] === board[1][1] && board[1][1] === board[2][1])) ||
+         ((mark === board[0][2]) && (board[0][2] === board[1][2] && board[1][2] === board[2][2]))
+         ) { return true };
 
-  //   return false;
-  // }
+    return false;
+  }
 
 
   const getRoundStatus = () => {
-    if (GameBoard.isWinner(player1.getMark())) {
+    if (isWinner(player1.getMark())) {
       return 'red';
-    } else if (GameBoard.isWinner(player2.getMark())) {
+    } else if (isWinner(player2.getMark())) {
       return 'blue';
     } else if (GameBoard.isBoardFull()) {
       return 'draw';
@@ -172,7 +156,7 @@ function Player(playerMark) {
   
   return {
     markCell,
-    getMark // not used
+    getMark
   }
 }
 
